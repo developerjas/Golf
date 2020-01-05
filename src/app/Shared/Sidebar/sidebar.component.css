@@ -1,0 +1,18 @@
+#sidebar {
+  border-style:groove;
+  width: 200px;
+  position: fixed;
+  margin:auto;
+  left: 0;
+  height: 94vh;
+  z-index: 999;
+  transition: all 0.3s;
+  text-align:left;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+

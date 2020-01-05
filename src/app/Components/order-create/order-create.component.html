@@ -1,0 +1,99 @@
+<app-sidebar></app-sidebar>
+<br />
+<form #f="ngForm">
+  <div class="container">
+    <div class="row" style="margin-left:10%">
+      <div class="col-md-6">
+        <h1>Order-Details</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <label for=" OrderNumber">Order Number</label>
+          </div>
+          <div class="col-md-8">
+            <input name="OrderNumber"
+                   #OrderNumber="ngModel"
+                   required
+                   class="form-control"
+                   [(ngModel)]="order.orderNumber" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-4">
+            <label for="DateRequired">Date Required</label>
+          </div>
+          <div class="col-md-8">
+            <input type="text"
+                   name="DateRequired"
+                   placeholder="Datepicker"
+                   required
+                   class="form-control"
+                   bsDatepicker>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-4">
+            <label for="Description">Description</label>
+          </div>
+          <div class="col-md-8">
+            <textarea class="form-control"
+                      rows="4"
+                      name="Description"
+                      required
+                      #Description="ngModel"
+                      [(ngModel)]="order.description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h1>Products</h1>
+        <table class="table table-bordered" style="border-style:solid">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Product Name</th>
+              <th scope="col">Qty</th>
+              <th scope="col">
+                <a (click)="addProduct()">
+                  <span class="glyphicon glyphicon-plus">
+                  </span>
+                </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="thead-light">
+            <tr *ngFor="let product of order.products; let i = index;">
+              <td>
+                <input class="form-control" [(ngModel)]="product.productName" required name="productName" type="text" />
+              </td>
+              <td>
+                <input class="form-control" [(ngModel)]="product.quantity" required name="quantity" type="number" />
+              </td>
+              <td><a (click)="deleteProduct(i)"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="float:right">
+      <div class="col-md-4">
+        <button type="button" class="btn btn-primary" [routerLink]="['/order-Index']"><span class="glyphicon glyphicon-circle-arrow-left"></span> Cancel</button><br /><br />
+      </div>
+      <div class="col-md-2" float="right">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid" (click)="saveOrder()"><span class="glyphicon glyphicon-plus"></span> Save New Order</button><br /><br />
+      </div>
+    </div>
+  </div>
+  <!--{{ f.value | json}}
+  {{ f.valid }}-->
+</form>
+
+
+
+
+
+
+
+
+
+

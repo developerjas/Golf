@@ -1,0 +1,55 @@
+<app-sidebar></app-sidebar>
+
+<div class="card">
+  <div class="container" style="margin-top:50px" border-style="solid" float="right">
+    <div class="row">
+      <div class="col-md-10">
+        <button type="button" class="btn btn-success" [routerLink]="['/order-create']"><span class="glyphicon glyphicon-plus"></span>Add</button><br /><br />
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-success" (click)="exportAsXLSX()"><span class="glyphicon glyphicon-open"></span> export to csv</button><br /><br />
+      </div>
+    </div>
+    <table class="table table-bordered" style="border-style:solid">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Order Number</th>
+          <th scope="col">Date Required</th>
+          <th scope="col">Description</th>
+          <th scope="col">No. of Component</th>
+          <th scope="col">Date Created</th>
+        </tr>
+      </thead>
+      <tbody class="thead-light">
+        <tr *ngFor="let order of orders">
+          <td *ngIf="order.id === editableOrderId"><input type="text" [(ngModel)]="order.orderNumber"> </td>
+          <td *ngIf="order.id !== editableOrderId" (click)="onSelected(order.id)">{{order.orderNumber}}</td>
+
+          <td *ngIf="order.id === editableOrderId"><input type="text" [(ngModel)]="order.dateRequired"> </td>
+          <td *ngIf="order.id !== editableOrderId" (click)="onSelected(order.id)">{{order.dateRequired | date}}</td>
+
+          <td *ngIf="order.id === editableOrderId"><input type="text" [(ngModel)]="order.description"> </td>
+          <td *ngIf="order.id !== editableOrderId" (click)="onSelected(order.id)">{{order.description}}</td>
+
+          <td *ngIf="order.id === editableOrderId"><input type="text"> </td>
+          <td *ngIf="order.id !== editableOrderId" (click)="onSelected(order.id)">{{getTotalProductQuantity(order)}}</td>
+
+          <td *ngIf="order.id === editableOrderId"><input type="text" [(ngModel)]="order.dateCreated"> </td>
+          <td *ngIf="order.id !== editableOrderId" (click)="onSelected(order.id)">{{order.dateCreated| date}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+
+    <div class="col-sm-2" style="float:right">
+      <button type="button" class="btn btn-success" [routerLink]="['/csv']"><span class="glyphicon glyphicon-open"></span> Import from csv</button><br /><br />
+      <!--<button type="button" class="btn btn-info" (click)="Upload()">Upload</button>-->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

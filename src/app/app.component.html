@@ -1,0 +1,28 @@
+
+
+<div  style="height:70%">
+  <div class="col-sm-11">
+    <img width="45" alt="golf logo" src="https://img.icons8.com/officel/16/000000/golf.png" />
+    <a [routerLink]="['order-create']"><span><b>GOLF OMS</b></span></a>
+  </div>
+  
+  <div class="col-4">
+    <!--<div><u>{{}}</u></div>-->
+    <a  *ngIf="isAuthencation" aria-label="logout" (click)="onLogout()" style="cursor: pointer;" title="logout">
+      <img width="40"
+           alt="logout logo"
+           src="https://img.icons8.com/material-outlined/24/000000/export.png" />
+    </a>
+  </div>
+</div>
+
+
+
+<!-- main app container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
